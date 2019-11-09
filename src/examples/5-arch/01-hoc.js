@@ -1,6 +1,6 @@
 import React from 'react'
 
-const withUsers = () => (Target) => {
+const withUsers = (Target) => {
   class Proxy extends React.Component{
     constructor(){
       super()
@@ -26,11 +26,7 @@ const withUsers = () => (Target) => {
   return Proxy
 }
 
-export default withRequest({
-  url :'...'
-})( (props) => {
-
-
+export default withUsers( (props) => {
   if(props.users === null) {
     return <div>loading...</div>
   }
