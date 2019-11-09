@@ -1,35 +1,17 @@
-import React, {useState} from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
-import {HashRouter, Route, Link} from 'react-router-dom'
-import './index.css'
+import App from './App'
 
-const req = require.context('./examples', false, /\.js$/)
-const routers = req.keys().map(key => {
-  const path = '/' + key.replace(/js/g, '').split(/[./]/).filter(x => x).join('/')
-  return {
-    path,
-    component : req(key).default
-  }
-})
 
-const App = () => {
-  const [sel, setSel] = useState(window.location.href.split('#').pop())
 
-  return <HashRouter>
-    <ul className='menu'>
-      {routers.map((x, i) => {
-        return <li 
-          className={sel === x.path ? 'active' : ''}
-          key={i}>
-          <Link onClick={() => setSel(sel => x.path)} to={x.path}>{x.path}</Link></li>
-      })}
-    </ul>
-    <div className='content'>
-      {routers.map((x, i) => {
-        return <Route key={x.path} component={x.component} path={x.path} />
-      })}
-    </div>
-  </HashRouter>
+function render() {
+  ReactDOM.render(<App />, document.getElementById("root"))
 }
 
-ReactDOM.render(<App />, document.getElementById("root"))
+render()
+
+if(module.hot) {
+  module.hot.accept('./App.js', () => {
+    render()
+  })
+}

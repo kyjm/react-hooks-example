@@ -6,10 +6,13 @@ export default () => {
   const [count, setCount] = useState(0)
 
   useEffect( () => {
-    setTimeout(() => {
-      setCount(x => x + 1)
+    const I = setTimeout(() => {
+       setCount(x => x + 1)
     }, 1000)
-  })
+    return () => {
+      clearTimeout(I)
+    }
+  }, [Math.min(count, 4)])
 
   return <div>
     <p>{count}</p>

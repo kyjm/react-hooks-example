@@ -18,17 +18,18 @@ export default () => {
   //   useEffect(() => {
   //     setDisplay(x => true)
   //   }, [])
-  // } else {
+  // } 
+  // else {
   //   useEffect(() => {
   //     setDisplay(x => false)
   //   }, [])
   // }
-
-  // useEffect( () => {
-  //   if(count > 1) {
-  //     setDisplay(x => true)
-  //   }
-  // }, [count > 1])
+  
+  useEffect( () => {
+    if(count > 1) {
+      setDisplay(x => true)
+    }
+  }, [count > 1])
 
   return <div>
     <p>{count}</p>

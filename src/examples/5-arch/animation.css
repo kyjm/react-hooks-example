@@ -1,0 +1,14 @@
+.box {
+  width : 100px;
+  height : 100px;
+  background : blue;
+}
+
+.box-start {
+  margin-left : 100px;
+  transition: margin-left .3s ease;
+}
+
+.box-end {
+  margin-left : 100px;
+}
